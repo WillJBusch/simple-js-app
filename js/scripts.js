@@ -1,17 +1,12 @@
-/*var myName = 'Bob';
-document.write(myName);
-myName = 'John Doe';
-document.write(myName);
-var simpleAddition = 2 + 2;
-document.write(simpleAddition);
-var size = 100;
-var doublesize = size * 2;
-var minisize = (doublesize * 2) - (size / 2);
-document.write(minisize);*/
-var randomNumber = (Math.random() * 6);
-var diceRoll = Math.round(randomNumber);
-document.write(diceRoll);
-
-
-
-
+var repository = [
+    {name: 'Bisasam', height: 0.7, type: ['Pflanze', 'Gift']},
+    {name: 'Glumanda', height: 0.6, type: ['Feuer']},
+    {name: 'Schiggy', height: 0.5, type: ['Wasser']}
+];
+for (var i = 0; i < repository.length; i++) {
+    if (repository[i].height < 0.7){
+        document.write(repository[i].name +' '+ '(height:' + repository[i].height +')' +' '+'type:'+' ' + repository[i].type + '<br>');
+    } else {
+        document.write(repository[i].name +' '+ '(height:' + repository[i].height +') -Wow, that\'s big! '+'type:'+' ' + repository[i].type + '<br>');
+    }
+}
