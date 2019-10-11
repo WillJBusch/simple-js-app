@@ -1,0 +1,42 @@
+.pokemon-list {
+    list-style-type: none;
+    padding: 5px;
+    border: 2px black solid;
+    width: 522.5px;
+    margin-left: auto;
+    margin-right: auto;   
+}
+.headlinepd {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px black solid;    
+    background-color: #DCDCDC;
+    height: 40px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+.buttonToStyle {
+    border: none; /*2px blue solid;*/
+    background-color: #DCDCDC;
+    height: 40px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 2px;
+    margin-top: 2px;      
+}
+.buttonToStyle:hover {
+    cursor: pointer;
+}
+@media all and (max-width: 550px) {
+    .pokemon-list {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto; 
+        border: 2px black solid;
+        padding: 5px;
+    }
+}
