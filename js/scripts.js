@@ -37,8 +37,7 @@ var repository2 = [
             listItem.appendChild(button);
             $pokemonList.appendChild(listItem);          // add li to ul                        
             button.addEventListener('click', function(event){                
-                showDetails(repository);
-                
+                showDetails(repository);           
             });
         }
         //adding event listener
