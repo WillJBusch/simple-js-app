@@ -28,32 +28,49 @@ var repository2 = [
         function add(pokemon) {
             repository.push(pokemon);
         }
+        //declare function that creates buttons and li's 
+        function addListItem (pokemon) {
+            var listItem = document.createElement('li'); //create li                       
+            var button = document.createElement('button');
+            button.innerText = pokemon;
+            button.classList.add('buttonToStyle');            
+            listItem.appendChild(button);
+            $pokemonList.appendChild(listItem);          // add li to ul                        
+            button.addEventListener('click', function(event){                
+                showDetails(repository);
+                
+            });
+        }
+        //adding event listener
+        function showDetails(pokemon) {
+            pokemon.forEach(function(pokemon) {
+                console.log(pokemon.name)
+            });
+        }
 
         function getAll() {
             return repository;
         }
-
-        return {
+        //returning functions inside pokemonRepository to be able reference outside of IIFE
+        return {                       
             add: add,
-            getAll: getAll            
+            getAll: getAll,  
+            addListItem : addListItem          
         };
     })();    
-    
+    // referencing HTML ul-tag pokemon-list
+    var $pokemonList = document.querySelector('.pokemon-list');
     //declaring function printPokemon
     function printPokemon (){
         //declaring function with forEach-loop to print Pokemondetails
-        pokemonRepository.getAll().forEach(function(pokemonDetails){
-            if (pokemonDetails.height < 0.7){
-                document.write(pokemonDetails.name +' '+ '(height:' + pokemonDetails.height +')' +' '+'type:'+' ' + pokemonDetails.type + '<br>');
-            } else {
-                document.write(pokemonDetails.name +' '+ '(height:' + pokemonDetails.height +') -Wow, that\'s big! '+'type:'+' ' + pokemonDetails.type + '<br>');
-            }    
+        pokemonRepository.getAll().forEach(function(pokemonDetails){            
+            
+            pokemonRepository.addListItem(pokemonDetails.name);  
+
         });
-    }
-    
+    }    
     repository2.forEach(pokemonRepository.add) //referencing all repository2 items via forEach loop
-    //pokemonRepository.add(...repository2); // parameter for function that pushes value into array
-    console.log(pokemonRepository.getAll()); // [ output Pokemon parameter ]
+    console.log(pokemonRepository.getAll()); // [ output Pokemon parameter in console ]
     printPokemon();//calling printPokemon function
 })()
 
