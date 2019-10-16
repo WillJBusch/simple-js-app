@@ -10,7 +10,10 @@ var repository2 = [
         var repository = [
             {name: 'Bisasam', height: 0.7, type: ['Pflanze', 'Gift']},
             {name: 'Glumanda', height: 0.6, type: ['Feuer']},
-            {name: 'Schiggy', height: 0.5, type: ['Wasser']}
+            {name: 'Schiggy', height: 0.5, type: ['Wasser']},
+            {name: 'Raupy', height: 0.3, type: ['Käfer']},       
+            {name: 'Hornliu', height: 0.3, type: ['Käfer, Gift']},
+            {name: 'Taubsi', height: 0.3, type: ['Normal, Flug']}
         ];
   
         function add(pokemon) {
@@ -51,15 +54,12 @@ var repository2 = [
     // referencing HTML ul-tag pokemon-list
     var $pokemonList = document.querySelector('.pokemon-list');
     //declaring function printPokemon
-    function printPokemon(){
-        //declaring forEach function to print pokemon
-        pokemonRepository.getAll().forEach(function(pokemonDetails) {
-            addListItem(pokemonDetails)
-        });
-    }
-    repository2.forEach(pokemonRepository.add) //referencing all repository2 items via forEach loop
-    console.log(pokemonRepository.getAll()); // [ output Pokemon parameter in console ]
-    printPokemon();//calling printPokemon function
+    
+    //declaring forEach function to print pokemon
+    pokemonRepository.getAll().forEach(function(pokemonDetails) {
+        addListItem(pokemonDetails)
+    });
+
 })();
 
 
