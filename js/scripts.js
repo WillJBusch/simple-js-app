@@ -57,7 +57,7 @@
     })();
 
     pokemonRepository.loadList().then(function() {
-        //no data is loaded ?????
+        
         pokemonRepository.getAll().forEach(function(pokemon) {
             addListItem(pokemon);
         });
@@ -80,10 +80,45 @@
     }
     
     function showDetails(item) {
-        pokemonRepository.loadDetails(item).then(function () {
-          console.log(item);        
+        var $modalContainer = document.querySelector('#bg-modal');
+        var $modalContainerChild = document.querySelector('.modal')
+        
+        // close modal button
+        var closeButtonElement = document.querySelector('.modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);                        
+
+        pokemonRepository.loadDetails(item).then(function () {            
+            var $infoArea = document.querySelector('.information-area');
+            $infoArea.innerText = item;
         });
+
+        //appending elements
+        $modalContainerChild.appendChild(closeButtonElement);        
+        //adding is-visible class to make modal visible
+        $modalContainer.classList.add('is-visible');                
     }
+    //defining $modalContainer as bg-modal again
+    var $modalContainer = document.querySelector('#bg-modal');
+    
+    // close modal esc
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
+            hideModal();
+        }
+    });
+    // close modal by clicking outside of it    
+    $modalContainer.addEventListener('click', (e) => {
+        var target = e.target;
+        if (target === $modalContainer) {
+            hideModal();
+        }
+    });
+    // declaring hideModal function to remove Modal
+    function hideModal() {
+        var $modalContainer = document.querySelector('#bg-modal');
+        $modalContainer.classList.remove('is-visible');
+    }  
     // referencing HTML ul-tag pokemon-list
     var $pokemonList = document.querySelector('.pokemon-list');
     
@@ -93,6 +128,7 @@
     });
 
 })();
+
 
 
 
