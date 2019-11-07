@@ -43,10 +43,10 @@
 }
 
 /* addding css for MODAL */
-#bg-modal {
+#modal-containerl {
     display: none;
 }
-#bg-modal.is-visible {   
+#modal-container.is-visible {   
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;    
@@ -70,8 +70,39 @@
     background: none;
     color: #777;
     text-decoration: underline;
-    display: block;
+    display: block;  
 }
-.information-area {
-    width: 50%;
+.modal-close:hover,
+.modal-close:focus{
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.6;
+}
+/*.modal h1 {
+    margin-top: -15px;
+    left: 0;
+    background: rgb(106, 42, 106);
+    color: #fff;
+    padding: 25px;
+    position: absolute;
+    width: 100%;
+}  */
+.pokemon-name {
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+.pokemon-img {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: flex-end;
+}
+.pokemon-height {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
