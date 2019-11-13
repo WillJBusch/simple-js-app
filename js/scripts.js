@@ -1,4 +1,3 @@
-
 (function() {
     var pokemonRepository = (function() {
         var repository = [ ];
@@ -37,7 +36,7 @@
                 // now we add details to the item
                 item.imageUrl = details.sprites.front_default;
                 item.height = details.height;
-                item.types = Object.keys(details.types);
+                item.types = Object.values(details.types);  // key changed to values
             }).catch(function (e) {
                 console.error(e);
             });
@@ -92,6 +91,7 @@
         var types = document.createElement('p');
         var closeButtonElement = document.createElement('button'); 
         var exists = document.querySelector('.modal');
+        var pokemonDiv = document.createElement('div');
                
         //adding classes to variables
         modal.classList.add('modal');
@@ -99,7 +99,10 @@
         name.classList.add('pokemon-name');
         height.classList.add('pokemon-height');
         types.classList.add('pokemon-types');
-        closeButtonElement.classList.add('modal-close');        
+        closeButtonElement.classList.add('modal-close'); 
+        pokemonDiv.classList.add('pokemon-img-block'); 
+        pokemonDiv.appendChild(image);                //appending image to it's own div to make it stylable and position it in modal (?)
+
                 
         // close modal button        
         closeButtonElement.innerText = 'Close';
@@ -107,10 +110,14 @@
 
         
         
-        pokemonRepository.loadDetails(item).then(function () {                        
+        pokemonRepository.loadDetails(item).then(function () {                
             image.setAttribute('src', item.imageUrl);
             name.innerText = item.name;
             height.innerText = 'Height - ' + item.height;
+            
+            span = types.innerHTML= item.types.map(item => {
+                return item.type.name;
+            })
         });
         
         // to avoid creating another modal everytime another button is clicked
@@ -120,8 +127,8 @@
 
 
         //appending elements        
-        modal.appendChild(image);
         modal.appendChild(name);
+        modal.appendChild(pokemonDiv);
         modal.appendChild(height);
         modal.appendChild(types);
         modal.appendChild(closeButtonElement);
